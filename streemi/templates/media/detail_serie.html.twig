@@ -131,74 +131,18 @@
             <div class="max-w-3xl mx-auto mt-9">
                 <h2 class="text-lg font-medium text-black"><span class="font-bold text-red-600">Équipe</span> du film</h2>
                 <ul class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-5">
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md min-h-56">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Steve_Franks_by_Gage_Skidmore.jpg/440px-Steve_Franks_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Steve Franks</span>
-                                <span class="text-gray-100 text-xs">Scénarise</span>
-                            </div>
-                        </div>
-                    </li>
+                    {% include 'layout/parts/staff/staff-card.html.twig' %}
                 </ul>
             </div>
             <div class="max-w-3xl mx-auto mt-9">
                 <h2 class="text-lg font-medium text-black">Le <span class="font-bold text-red-600">Casting</span></h2>
                 <ul class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-5">
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/James_Roday_by_Gage_Skidmore.jpg/306px-James_Roday_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">James Roday</span>
-                                <span class="text-gray-100 text-xs truncate">Shawn Spencer</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Dule_Hill_by_Gage_Skidmore.jpg/313px-Dule_Hill_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Dulé Hill</span>
-                                <span class="text-gray-100 text-xs truncate">Burton « Gus » Guster</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Timothy_Omundson_by_Gage_Skidmore.jpg/280px-Timothy_Omundson_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Timothy Omundson</span>
-                                <span class="text-gray-100 text-xs truncate">Carlton J. Lassiter</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Maggie_Lawson_by_Gage_Skidmore.jpg/294px-Maggie_Lawson_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Maggie Lawson</span>
-                                <span class="text-gray-100 text-xs truncate">Juliet O'Hara</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kirsten_Nelson_by_Gage_Skidmore.jpg/295px-Kirsten_Nelson_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Kirsten Nelson</span>
-                                <span class="text-gray-100 text-xs truncate">Cheffe Karen Vick</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative rounded-xl overflow-hidden transition cursor-pointer hover:scale-105 hover:opacity-90 hover:shadow-md">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Corbin_Bernsen_by_Gage_Skidmore.jpg/314px-Corbin_Bernsen_by_Gage_Skidmore.jpg" class="object-cover h-full w-full -z-10" alt="">
-                        <div class="absolute top-0 h-full w-full bg-gradient-to-t from-black/50 p-3 flex flex-col justify-end">
-                            <div class="self-center flex flex-col items-center space-y-2">
-                                <span class="capitalize text-white font-medium drop-shadow-md">Corbin Bernsen</span>
-                                <span class="text-gray-100 text-xs truncate">Henry Spencer</span>
-                            </div>
-                        </div>
-                    </li>
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
+                    {% include 'layout/parts/staff/actor-card.html.twig' %}
                 </ul>
             </div>
             <div class="max-w-3xl mx-auto mt-9">
