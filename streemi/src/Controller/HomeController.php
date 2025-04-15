@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\MediaRepository;
+use App\Repository\MovieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,9 +11,17 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function home(): Response
+    public function home(
+        MovieRepository $movieRepository,
+    ): Response
     {
-        return $this->render('index.html.twig');
+        $movies = $movieRepository->findAll();
+
+        return $this->render('index.html.twig', [
+            'movies' => $movies,
+            'showLeftMenu' => true,
+            'showRightSidebar' => true
+        ]);
     }
 
     #[Route('/admin', name: 'app_admin')]
@@ -44,10 +54,15 @@ final class HomeController extends AbstractController
         return $this->render('media/category.html.twig');
     }
 
-    #[Route('/detail', name: 'app_detail')]
-    public function detail(): Response
+    #[Route('/detail/{id}', name: 'app_detail')]
+    public function detail(string $id, MovieRepository $movieRepository): Response
     {
-        return $this->render('media/detail.html.twig');
+        $movie = $movieRepository->find($id);
+        return $this->render('media/detail.html.twig', [
+            'movie' => $movie,
+            'showLeftMenu' => true,
+            'showRightSidebar' => true
+        ]);
     }
 
     #[Route('/detail-serie', name: 'app_detail_serie')]

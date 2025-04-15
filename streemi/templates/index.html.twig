@@ -57,11 +57,9 @@
             </div>
         </div>
         <ul class="mt-4 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5">
-            {% include 'layout/parts/movies/movie-card-large.html.twig' %}
-            {% include 'layout/parts/movies/movie-card-large.html.twig' %}
-            {% include 'layout/parts/movies/movie-card-large.html.twig' %}
-            {% include 'layout/parts/movies/movie-card-large.html.twig' %}
-            {% include 'layout/parts/movies/movie-card-large.html.twig' %}
+            {% for movie in movies %}
+                {% include 'layout/parts/movies/movie-card-large.html.twig' %}
+            {% endfor %}
         </ul>
     </section>
 </main>
