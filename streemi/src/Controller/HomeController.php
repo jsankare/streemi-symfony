@@ -92,28 +92,10 @@ final class HomeController extends AbstractController
         return $this->render('media/lists.html.twig');
     }
 
-    #[Route('/register', name: 'app_register')]
-    public function register(): Response
-    {
-        return $this->render('auth/register.html.twig', [
-            'showLeftMenu' => false,
-            'showRightSidebar' => false
-        ]);
-    }
-
     #[Route('/subscriptions', name: 'app_subscriptions')]
     public function subscriptions(): Response
     {
         return $this->render('subscriptions/subscriptions.html.twig');
-    }
-
-    #[Route('/login', name: 'app_login')]
-    public function login(): Response
-    {
-        return $this->render('auth/login.html.twig', [
-            'showLeftMenu' => false,
-            'showRightSidebar' => false
-        ]);
     }
 
     #[Route('/reset', name: 'app_reset')]
