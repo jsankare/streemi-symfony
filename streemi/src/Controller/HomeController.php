@@ -15,9 +15,11 @@ final class HomeController extends AbstractController
         MovieRepository $movieRepository,
     ): Response
     {
+        $user = $this->getUser();
         $movies = $movieRepository->findAll();
 
         return $this->render('index.html.twig', [
+            'user' => $user,
             'movies' => $movies,
             'showLeftMenu' => true,
             'showRightSidebar' => true

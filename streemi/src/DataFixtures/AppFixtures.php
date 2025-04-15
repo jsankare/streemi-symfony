@@ -129,10 +129,12 @@ class AppFixtures extends Fixture
     {
         for ($i = 0; $i < self::MAX_USERS; $i++) {
             $user = new User();
-            $user->setEmail(email: "test_$i@example.com");
+            $user->setEmail(email: "toto$i@mail.fr");
             $user->setUsername(username: "test_$i");
-            $user->setPassword(password: 'coucou');
+            $user->setPassword(password: password_hash(password: 'coucou', algo: PASSWORD_BCRYPT));
             $user->setAccountStatus(accountStatus: UserAccountStatusEnum::ACTIVE);
+            $user->setRoles(['ROLE_USER']);
+
             $users[] = $user;
             $manager->persist(object: $user);
         }

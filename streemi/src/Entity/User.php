@@ -7,7 +7,6 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -23,13 +22,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
-
-    private string $plainPassword = '';
 
     #[ORM\Column(enumType: UserAccountStatusEnum::class)]
     private ?UserAccountStatusEnum $accountStatus = UserAccountStatusEnum::INACTIVE;
@@ -77,7 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $uploads;
 
     #[ORM\Column]
-    private array $roles = ['ROLE_USER']; // default role
+    private array $roles = ['ROLE_USER'];
 
     public function __construct()
     {
@@ -87,6 +84,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->subscriptionHistories = new ArrayCollection();
         $this->watchHistories = new ArrayCollection();
         $this->uploads = new ArrayCollection();
+        $this->accountStatus = UserAccountStatusEnum::ACTIVE;
     }
 
     public function getId(): ?int
@@ -102,7 +100,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): static
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -114,7 +111,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -126,7 +122,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -138,7 +133,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAccountStatus(UserAccountStatusEnum $accountStatus): static
     {
         $this->accountStatus = $accountStatus;
-
         return $this;
     }
 
@@ -150,7 +144,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCurrentSubscription(?Subscription $currentSubscription): static
     {
         $this->currentSubscription = $currentSubscription;
-
         return $this;
     }
 
@@ -192,7 +185,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setProfilePicture(string $profilePicture): static
     {
         $this->profilePicture = $profilePicture;
-
         return $this;
     }
 
@@ -348,13 +340,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
-        return $this->roles;
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     public function eraseCredentials(): void
     {
-        // TODO: Implement eraseCredentials() method.
+        // If you store any temporary, sensitive data on the user, clear it here
     }
 
     public function getUserIdentifier(): string
